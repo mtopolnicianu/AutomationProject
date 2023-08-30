@@ -2,6 +2,7 @@ package pageObject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,12 +15,9 @@ public class BasePage {
 
 
     public BasePage(WebDriver driver) {
+
         this.driver = driver;
-      //  wait = new WebDriverWait(driver, Duration.ofSeconds(20).getSeconds());
-//        this.wait = new WebDriverWait(driver, 20);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     public WebDriver getDriver() {
@@ -27,9 +25,11 @@ public class BasePage {
     }
 
     public void waitForElementToBeVisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofMillis(500L));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     public void waitForElementToBeClickable (WebElement element){
+        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofMillis(500L));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 }

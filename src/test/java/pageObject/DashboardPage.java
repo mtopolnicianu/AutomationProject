@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class DashboardPageObject {
-    public WebDriver driver;
-    public DashboardPageObject(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+public class DashboardPage extends BasePage{
+
+    public DashboardPage(WebDriver driver) {
+        super(driver);
     }
 
     public void accessDashboardLink(){

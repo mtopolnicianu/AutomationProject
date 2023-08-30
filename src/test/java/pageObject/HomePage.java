@@ -1,0 +1,42 @@
+package pageObject;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class HomePage extends BasePage{
+
+
+    @FindBy(xpath = "//p[@class=\"oxd-userdropdown-name\"]")
+    private WebElement userNameValidation;
+    @FindBy(xpath = "//img[@alt='client brand banner']") // Relative XPath
+    private WebElement orangeHrmBanner;
+    @FindBy(xpath = "/html/body/div/div[1]/div[1]/aside/nav/div[2]/div/div") // Absolute XPath
+    private WebElement searchButton;
+    @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Admin\"]")
+    private WebElement adminLink;
+    @FindBy(xpath = "//ul[@class=\"oxd-main-menu\"]/li[2]")
+    private WebElement pimLink;
+    @FindBy(xpath = "//ul[@class=\"oxd-main-menu\"]/li[3]")
+    private WebElement leaveLink;
+    @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Time\"]")
+    private WebElement timeLink;
+    @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Directory\"]")
+    private  WebElement directoryLink;
+    @FindBy(xpath = "//span[text()='Maintenance']")
+    private WebElement maintenance;
+
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
+
+
+    public void verifyUserName() {
+        waitForElementToBeVisible(userNameValidation);
+        Assert.assertTrue(userNameValidation.isDisplayed());
+    }
+
+
+}
