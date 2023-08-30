@@ -1,7 +1,10 @@
 package pageObject;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
@@ -21,9 +24,11 @@ public class LoginPage extends BasePage {
 
         enterValidUserName.sendKeys("Admin");
     }
+
     public void addValidPassword(){
         enterUserValidPassword.sendKeys("admin123");
     }
+
     public void clickLoginButton() {
         loginButton.click();
     }
