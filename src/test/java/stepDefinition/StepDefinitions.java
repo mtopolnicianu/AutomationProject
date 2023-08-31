@@ -1,6 +1,7 @@
 package stepDefinition;
 
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,35 +24,44 @@ public class StepDefinitions {
 
 
     @Before
-    public void before(){
+    public void before() {
         System.setProperty("webdriver.chrome.driver", "src/test/java/utils/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+//        String currentUrl = driver.getCurrentUrl();
+//        System.out.println(currentUrl);
+//        String title = driver.getTitle();
+//        System.out.println(title);
+//        String pageSource = driver.getPageSource();
+//        System.out.println(pageSource);
+//        driver.navigate().to("http://google.com");
 
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         homePage = PageFactory.initElements(driver, HomePage.class);
-        dashboardPage=PageFactory.initElements(driver, DashboardPage.class);
-        orangeHrmPage=PageFactory.initElements(driver,OrangeHrmPage.class);
+        dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
+        orangeHrmPage = PageFactory.initElements(driver, OrangeHrmPage.class);
     }
 
- //  @After
-//    public void after(){
+//    @After
+//    public void after() {
+//        driver.close();
 //        driver.quit();
 //    }
 
     @Given("^I access ([^\"]*) page$")
-    public void accessUrl(String link){
+    public void accessUrl(String link) {
         driver.get(link);
     }
 
 
     @And("^I enter the valid login credentials$")
-    public void enterValidCredentials(){
+    public void enterValidCredentials() {
         loginPage.addValidUserName();
         loginPage.addValidPassword();
     }
+
     @And("^I press the Login button to log into my account$")
-    public void pressLoginButton(){
+    public void pressLoginButton() {
         loginPage.clickLoginButton();
     }
 
@@ -61,7 +71,7 @@ public class StepDefinitions {
     }
 
     @And("^I enter my email address to try the HR software for free$")
-    public void searchWithYourEmailAddress(){
+    public void searchWithYourEmailAddress() {
         orangeHrmPage.enterYourEmailAddressSearchButton();
     }
 
