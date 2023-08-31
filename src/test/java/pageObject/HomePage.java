@@ -26,6 +26,11 @@ public class HomePage extends BasePage{
     private  WebElement directoryLink;
     @FindBy(xpath = "//span[text()='Maintenance']")
     private WebElement maintenance;
+    @FindBy(css = "img.oxd-userdropdown-img")
+    private  WebElement profilePicture;
+
+
+
 
 
     public HomePage(WebDriver driver) {
