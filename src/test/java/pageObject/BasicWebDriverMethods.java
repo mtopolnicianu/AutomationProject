@@ -37,17 +37,20 @@ public class BasicWebDriverMethods {
         enterUserNameBox.sendKeys("Admin");
 
         //how to use className as locator
-        int sliders = driver.findElements(By.className("homeslider-container")).size();
-        System.out.println(sliders);
-
-        //how to use tagName as locator
-        int links = driver.findElements(By.tagName("a")).size();
-        System.out.println(links);
+//        int sliders = driver.findElements(By.className("homeslider-container")).size();
+//        System.out.println(sliders);
+//
+//        //how to use tagName as locator
+//        int links = driver.findElements(By.tagName("a")).size();
+//        System.out.println(links);
 
 
         Thread.sleep(1000);
         WebElement enterPasswordBox = driver.findElement(By.cssSelector("input[name=password")); //Tag and Class
         enterPasswordBox.sendKeys("admin123");
+        driver.findElement(By.name("firstname")).sendKeys("Testing");
+        driver.findElement(By.name("firstname")).clear();
+        System.out.println(driver.findElement(By.name("firstname")).getAttribute("class"));
 
         Thread.sleep(1000);
         WebElement pressLoginButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
