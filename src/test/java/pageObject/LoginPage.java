@@ -18,6 +18,8 @@ public class LoginPage extends BasePage {
     private WebElement loginButton;
     @FindBy(xpath = "//div[@class=\"oxd-alert-content oxd-alert-content--error\"]/p[text()=\"Invalid credentials\"]")
     private WebElement invalidCredentialsMessage;
+    @FindBy(css = ".oxd-input-field-error-message")
+    private WebElement errorMessageForEmptyField;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -46,6 +48,10 @@ public class LoginPage extends BasePage {
         waitForElementToBeVisible(invalidCredentialsMessage);
         Assert.assertTrue("Welcome, UserFirstName UserLastName!", invalidCredentialsMessage.getText().contains("Invalid credentials"));
 
+    }
+    public void assertRequiredUserNameField(){
+        waitForElementToBeVisible(errorMessageForEmptyField);
+        Assert.assertTrue("Username valid", errorMessageForEmptyField.getText().contains("Required"));
     }
 
 }

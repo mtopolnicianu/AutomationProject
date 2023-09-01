@@ -85,5 +85,15 @@ public class StepDefinitions {
         orangeHrmPage.enterYourEmailAddressSearchButton();
     }
 
+    @Given("^I enter the valid password without a username$")
+        public void enterPassword(){
+        loginPage.addValidPassword();
+    }
+
+    @Then("^I verify that an appropriate message is displayed required field$")
+    public void iVerifyMessageForUsernameEmptyField(){
+        loginPage.assertRequiredUserNameField();
+    }
+
 
 }
