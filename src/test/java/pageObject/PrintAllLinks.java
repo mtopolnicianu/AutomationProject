@@ -18,6 +18,10 @@ public class PrintAllLinks {
         System.out.println(titleUrl);
         driver.manage().window().maximize();
 
+
+
+        String startMyFreeTrialButton = driver.findElement(By.name("start my free trial")).getAttribute("type");
+        System.out.println(startMyFreeTrialButton);
         //List<WebElement> allTags = driver.findElements(By.tagName("a"));
         List<WebElement> allTags = driver.findElements(By.tagName("option"));
         System.out.println("Total tags are: " + allTags.size());
