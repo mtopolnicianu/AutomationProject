@@ -60,6 +60,16 @@ public class StepDefinitions {
         loginPage.addValidPassword();
     }
 
+    @Given("^I enter the invalid login credentials$")
+    public void enterMyInvalidCredentials(){
+        loginPage.addInvalidUserName();
+        loginPage.addValidPassword();
+    }
+    @Then("^I verify that an appropriate message is displayed for invalid credentials$")
+    public void iVerifyRejectedStatusSelected(){
+        loginPage.assertUserIsNotAllowedToLoginAccount();
+    }
+
     @And("^I press the Login button to log into my account$")
     public void pressLoginButton() {
         loginPage.clickLoginButton();

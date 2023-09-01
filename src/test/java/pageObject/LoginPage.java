@@ -1,6 +1,7 @@
 package pageObject;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,8 @@ public class LoginPage extends BasePage {
     private WebElement enterUserValidPassword;
     @FindBy(xpath = "//div[@class=\"oxd-form-actions orangehrm-login-action\"]")
     private WebElement loginButton;
+    @FindBy(xpath = "//div[@class=\"oxd-alert-content oxd-alert-content--error\"]/p[text()=\"Invalid credentials\"]")
+    private WebElement invalidCredentialsMessage;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -24,6 +27,12 @@ public class LoginPage extends BasePage {
 
         enterValidUserName.sendKeys("Admin");
     }
+    public void addInvalidUserName(){
+        enterValidUserName.sendKeys("admin1");
+    }
+    public void addInvalidPassword(){
+        enterUserValidPassword.sendKeys("test123");
+    }
 
     public void addValidPassword(){
         enterUserValidPassword.sendKeys("admin123");
@@ -31,6 +40,12 @@ public class LoginPage extends BasePage {
 
     public void clickLoginButton() {
         loginButton.click();
+    }
+
+    public void assertUserIsNotAllowedToLoginAccount(){
+        waitForElementToBeVisible(invalidCredentialsMessage);
+        Assert.assertTrue("Welcome, UserFirstName UserLastName!", invalidCredentialsMessage.getText().contains("Invalid credentials"));
+
     }
 
 }
