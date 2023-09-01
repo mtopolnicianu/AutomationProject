@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
 
     @FindBy(xpath = "//p[@class=\"oxd-userdropdown-name\"]")
@@ -23,20 +23,17 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Time\"]")
     private WebElement timeLink;
     @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Directory\"]")
-    private  WebElement directoryLink;
+    private WebElement directoryLink;
     @FindBy(xpath = "//span[text()='Maintenance']")
     private WebElement maintenance;
     @FindBy(css = "img.oxd-userdropdown-img")
-    private  WebElement profilePicture;
-
-
-
-
+    private WebElement profilePicture;
+    @FindBy(xpath = "//div[@class=\"orangehrm-dashboard-widget-name\"]/p[text()='My Actions']")
+    private WebElement myActionsSection;
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
 
     public void verifyUserName() {
         waitForElementToBeVisible(userNameValidation);

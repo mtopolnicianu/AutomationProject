@@ -19,39 +19,59 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//div[@class=\"oxd-alert-content oxd-alert-content--error\"]/p[text()=\"Invalid credentials\"]")
     private WebElement invalidCredentialsMessage;
     @FindBy(css = ".oxd-input-field-error-message")
-    private WebElement errorMessageForEmptyField;
+    private WebElement errorMessageForEmptyUserNameField;
+    @FindBy(xpath = "//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']")
+    private WebElement errorMessageForEmptyPasswordField;
+    @FindBy(xpath = "//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--gutters oxd-sheet--gray-lighten-2 orangehrm-demo-credentials']")
+    private WebElement userNameAdmin;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void addValidUserName(){
+    public void checkUserNameDisplayed() {
+        userNameAdmin.getText();
+    }
+
+    public void addValidUserName() {
 
         enterValidUserName.sendKeys("Admin");
     }
-    public void addInvalidUserName(){
+
+    public void addInvalidUserName() {
         enterValidUserName.sendKeys("admin1");
     }
-    public void addInvalidPassword(){
+
+    public void addInvalidPassword() {
         enterUserValidPassword.sendKeys("test123");
     }
 
-    public void addValidPassword(){
+    public void addValidPassword() {
         enterUserValidPassword.sendKeys("admin123");
+    }
+
+    public void addUserName() {
+        enterValidUserName.sendKeys("Admin");
     }
 
     public void clickLoginButton() {
         loginButton.click();
     }
 
-    public void assertUserIsNotAllowedToLoginAccount(){
+    public void assertUserIsNotAllowedToLoginAccount() {
         waitForElementToBeVisible(invalidCredentialsMessage);
         Assert.assertTrue("Welcome, UserFirstName UserLastName!", invalidCredentialsMessage.getText().contains("Invalid credentials"));
 
     }
-    public void assertRequiredUserNameField(){
-        waitForElementToBeVisible(errorMessageForEmptyField);
-        Assert.assertTrue("Username valid", errorMessageForEmptyField.getText().contains("Required"));
+
+    public void assertRequiredUserNameField() {
+        waitForElementToBeVisible(errorMessageForEmptyUserNameField);
+        Assert.assertTrue("Valid username", errorMessageForEmptyUserNameField.getText().contains("Required"));
+    }
+
+    public void assertRequiredPasswordField() {
+        waitForElementToBeVisible(errorMessageForEmptyPasswordField);
+        Assert.assertTrue("Valid password", errorMessageForEmptyPasswordField.getText().contains("Required"));
     }
 
 }

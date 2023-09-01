@@ -61,12 +61,13 @@ public class StepDefinitions {
     }
 
     @Given("^I enter the invalid login credentials$")
-    public void enterMyInvalidCredentials(){
+    public void enterMyInvalidCredentials() {
         loginPage.addInvalidUserName();
         loginPage.addValidPassword();
     }
+
     @Then("^I verify that an appropriate message is displayed for invalid credentials$")
-    public void iVerifyRejectedStatusSelected(){
+    public void iVerifyRejectedStatusSelected() {
         loginPage.assertUserIsNotAllowedToLoginAccount();
     }
 
@@ -86,13 +87,24 @@ public class StepDefinitions {
     }
 
     @Given("^I enter the valid password without a username$")
-        public void enterPassword(){
+    public void enterPassword() {
         loginPage.addValidPassword();
     }
 
-    @Then("^I verify that an appropriate message is displayed required field$")
-    public void iVerifyMessageForUsernameEmptyField(){
+    @Then("^I verify that an appropriate message is displayed required username field$")
+    public void iVerifyMessageForEmptyUsernameField() {
         loginPage.assertRequiredUserNameField();
+    }
+
+    @Given("^I enter the valid username without a password$")
+    public void enterUserName() {
+        loginPage.addValidUserName();
+    }
+
+    @Then("^I verify that an appropriate message is displayed required password field$")
+    public void iVerifyMessageForEmptyPasswordField() {
+        loginPage.assertRequiredPasswordField();
+
     }
 
 
