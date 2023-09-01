@@ -27,6 +27,7 @@ public class BasicWebDriverMethods {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
+
         WebDriverManager.chromedriver().driverVersion("116.0.5845.110").setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

@@ -9,4 +9,8 @@ Feature: OrangeHrm login page testing
     Then I verify that I am logged into my account by checking that the username is displayed in the navigation bar in the right corner of the application
 
 
+    Scenario: As a user I want to log into my account with invalid credentials
+      Given I enter the invalid login credentials
+      And I press the Login button to log into my account
+      Then I verify that an appropriate message is displayed for invalid credentials
 
