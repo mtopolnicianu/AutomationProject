@@ -10,10 +10,7 @@ import io.cucumber.java.en.Given;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import pageObject.DashboardPage;
-import pageObject.HomePage;
-import pageObject.LoginPage;
-import pageObject.OrangeHrmPage;
+import pageObject.*;
 
 public class StepDefinitions {
     public WebDriver driver;
@@ -21,6 +18,7 @@ public class StepDefinitions {
     private DashboardPage dashboardPage;
     private HomePage homePage;
     private OrangeHrmPage orangeHrmPage;
+    private LeavePage leavePage;
 
 
     @Before
@@ -40,6 +38,7 @@ public class StepDefinitions {
         homePage = PageFactory.initElements(driver, HomePage.class);
         dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
         orangeHrmPage = PageFactory.initElements(driver, OrangeHrmPage.class);
+        leavePage = PageFactory.initElements(driver, LeavePage.class);
     }
 
 //    @After
@@ -104,6 +103,27 @@ public class StepDefinitions {
     @Then("^I verify that an appropriate message is displayed required password field$")
     public void iVerifyMessageForEmptyPasswordField() {
         loginPage.assertRequiredPasswordField();
+    }
+
+    @Then("^I check the Help button to be displayed$")
+    public void iVerifyHelpButtonIsDisplayed() {
+        homePage.verifyHelpButton();
+    }
+
+    @And("^I click the Leave link$")
+    public void openLeavePage() {
+        leavePage.clickLeaveLink();
+    }
+
+    @And("^I choose to select Add Leave Entitlement from the Entitlements section$")
+    public void selectEntitlementsOption() {
+        leavePage.clickEntitlementsOption();
+        leavePage.selectAddEntitlementsOption();
+    }
+
+    @Then("^I can see the Individual Employee button is checked by default in the Add to section$")
+    public void iVerifyIndividualEmployeeButton() {
+        leavePage.verifyIndividualEmployeeButtonIsChecked();
 
     }
 

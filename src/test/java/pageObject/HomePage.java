@@ -18,8 +18,6 @@ public class HomePage extends BasePage {
     private WebElement adminLink;
     @FindBy(xpath = "//ul[@class=\"oxd-main-menu\"]/li[2]")
     private WebElement pimLink;
-    @FindBy(xpath = "//ul[@class=\"oxd-main-menu\"]/li[3]")
-    private WebElement leaveLink;
     @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Time\"]")
     private WebElement timeLink;
     @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Directory\"]")
@@ -30,6 +28,8 @@ public class HomePage extends BasePage {
     private WebElement profilePicture;
     @FindBy(xpath = "//div[@class=\"orangehrm-dashboard-widget-name\"]/p[text()='My Actions']")
     private WebElement myActionsSection;
+    @FindBy(css = "[title=Help]")
+    private WebElement helpButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -38,6 +38,10 @@ public class HomePage extends BasePage {
     public void verifyUserName() {
         waitForElementToBeVisible(userNameValidation);
         Assert.assertTrue(userNameValidation.isDisplayed());
+    }
+    public void verifyHelpButton(){
+        waitForElementToBeVisible(helpButton);
+        Assert.assertTrue("Help button could not be found", helpButton.isDisplayed());
     }
 
 
