@@ -7,9 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends BasePage
+{
 
+    @FindBy(name = "username")
+    private WebElement userNameField;
+    @FindBy(name = "password")
+    private  WebElement passwordFiled;
     @FindBy(name = "username")
     private WebElement enterValidUserName;
     @FindBy(name = "password")
@@ -24,6 +30,7 @@ public class LoginPage extends BasePage {
     private WebElement errorMessageForEmptyPasswordField;
     @FindBy(xpath = "//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--gutters oxd-sheet--gray-lighten-2 orangehrm-demo-credentials']")
     private WebElement userNameAdmin;
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -72,6 +79,23 @@ public class LoginPage extends BasePage {
     public void assertRequiredPasswordField() {
         waitForElementToBeVisible(errorMessageForEmptyPasswordField);
         Assert.assertTrue("Valid password", errorMessageForEmptyPasswordField.getText().contains("Required"));
+    }
+
+    public void assertUserNameField(){
+
+        SoftAssert softAssert = new SoftAssert();
+        waitForElementToBeVisible(userNameField);
+        //softAssert.assertFalse(userNameField.isDisplayed());
+        softAssert.assertTrue(userNameField.isDisplayed());
+        softAssert.assertAll();
+       // Assert.assertTrue(userNameField.isDisplayed());
+      //  Assert.assertFalse(userNameField.isDisplayed());
+
+    }
+    public void assertPasswordField(){
+        waitForElementToBeVisible(passwordFiled);
+        Assert.assertTrue(passwordFiled.isDisplayed());
+      //  Assert.assertFalse(passwordFiled.isDisplayed());
     }
 
 }
