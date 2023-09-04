@@ -14,8 +14,6 @@ public class HomePage extends BasePage {
     private WebElement orangeHrmBanner;
     @FindBy(xpath = "/html/body/div/div[1]/div[1]/aside/nav/div[2]/div/div") // Absolute XPath
     private WebElement searchButton;
-    @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Admin\"]")
-    private WebElement adminLink;
     @FindBy(xpath = "//ul[@class=\"oxd-main-menu\"]/li[2]")
     private WebElement pimLink;
     @FindBy(xpath = "//a[@class=\"oxd-main-menu-item\"]/span[text()=\"Time\"]")

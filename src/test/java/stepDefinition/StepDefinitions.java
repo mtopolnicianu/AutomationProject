@@ -19,6 +19,7 @@ public class StepDefinitions {
     private HomePage homePage;
     private OrangeHrmPage orangeHrmPage;
     private LeavePage leavePage;
+    private AdminPage adminPage;
 
 
     @Before
@@ -39,6 +40,7 @@ public class StepDefinitions {
         dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
         orangeHrmPage = PageFactory.initElements(driver, OrangeHrmPage.class);
         leavePage = PageFactory.initElements(driver, LeavePage.class);
+        adminPage = PageFactory.initElements(driver, AdminPage.class);
     }
 
 //    @After
@@ -124,8 +126,26 @@ public class StepDefinitions {
     @Then("^I can see the Individual Employee button is checked by default in the Add to section$")
     public void iVerifyIndividualEmployeeButton() {
         leavePage.verifyIndividualEmployeeButtonIsChecked();
-
     }
 
+    @And("^I click the Admin link$")
+    public void accessAdminLink() {
+        adminPage.clickAdminLink();
+    }
 
+    @Then("^I verify that the title text is displayed correctly$")
+    public void iVerifyAdminTitleTextPage() {
+        adminPage.getActualTitleText();
+    }
+
+    @Then("^I check that when I clicked on the Admin link it also shows the User Management text below the Admin text$")
+    public void iVerifyAdditionalTextInAdmin() {
+        adminPage.iVerifyAdditionalTextForAdminPage();
+    }
+
+    @Then("^I verify that the username and password field are displayed on the login page$")
+    public void iVerifyUserNameField() {
+        loginPage.assertUserNameField();
+        loginPage.assertPasswordField();
+    }
 }
