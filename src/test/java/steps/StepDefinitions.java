@@ -148,4 +148,16 @@ public class StepDefinitions {
         loginPage.assertUserNameField();
         loginPage.assertPasswordField();
     }
+
+    @Then("^I verify that the company logo is displayed on the login page$")
+    public void iVerifyCompanyLogo(){
+        loginPage.validateLogo();
+    }
+
+    @Given("^I enter (.*) and (.*)$")
+    public void userEntersUsernameAndPassword(String username, String password){
+        loginPage.enterUsernameAndPassword(username,password);
+
+
+    }
 }
