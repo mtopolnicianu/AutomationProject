@@ -1,16 +1,16 @@
-package stepDefinition;
+package steps;
 
 
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageObject.*;
+
+import java.io.IOException;
 
 public class StepDefinitions {
     public WebDriver driver;
@@ -56,13 +56,13 @@ public class StepDefinitions {
 
 
     @And("^I enter the valid login credentials$")
-    public void enterValidCredentials() {
+    public void enterValidCredentials() throws IOException {
         loginPage.addValidUserName();
         loginPage.addValidPassword();
     }
 
     @Given("^I enter the invalid login credentials$")
-    public void enterMyInvalidCredentials() {
+    public void enterMyInvalidCredentials() throws IOException {
         loginPage.addInvalidUserName();
         loginPage.addValidPassword();
     }
@@ -88,7 +88,7 @@ public class StepDefinitions {
     }
 
     @Given("^I enter the valid password without a username$")
-    public void enterPassword() {
+    public void enterPassword() throws IOException {
         loginPage.addValidPassword();
     }
 
@@ -98,7 +98,7 @@ public class StepDefinitions {
     }
 
     @Given("^I enter the valid username without a password$")
-    public void enterUserName() {
+    public void enterUserName() throws IOException {
         loginPage.addValidUserName();
     }
 

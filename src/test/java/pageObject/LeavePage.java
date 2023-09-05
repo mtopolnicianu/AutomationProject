@@ -13,9 +13,8 @@ public class LeavePage extends BasePage {
 
     @FindBy(xpath = "//ul[@class=\"oxd-main-menu\"]/li[3]")
     private WebElement leaveLink;
-    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[3]/span")
+    @FindBy(xpath = "//span[text()='Entitlements ']")
     private WebElement entitlementsSection;
-    //  //li[@class='--active oxd-topbar-body-nav-tab --parent']/span[text()='Entitlements ']
 
     @FindBy(css = ".oxd-input-field-bottom-space:nth-of-type(1) .oxd-radio-wrapper")
     private WebElement individualEmployeeButton;

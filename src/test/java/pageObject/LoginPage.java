@@ -8,6 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
+import utils.Utils;
+
+import java.io.IOException;
+import java.util.Properties;
 
 public class LoginPage extends BasePage
 {
@@ -40,21 +44,28 @@ public class LoginPage extends BasePage
         userNameAdmin.getText();
     }
 
-    public void addValidUserName() {
-
-        enterValidUserName.sendKeys("Admin");
+    public void addValidUserName() throws IOException {
+        Properties prop = Utils.getPropertiesFile();
+        waitForElementToBeVisible(enterValidUserName);
+        enterValidUserName.sendKeys(prop.getProperty("userName"));
     }
 
-    public void addInvalidUserName() {
-        enterValidUserName.sendKeys("admin1");
+    public void addInvalidUserName() throws IOException {
+        Properties prop = Utils.getPropertiesFile();
+        waitForElementToBeVisible(enterValidUserName);
+        enterValidUserName.sendKeys(prop.getProperty("invalidUserName"));
     }
 
-    public void addInvalidPassword() {
-        enterUserValidPassword.sendKeys("test123");
+    public void addInvalidPassword() throws IOException {
+        Properties prop = Utils.getPropertiesFile();
+        waitForElementToBeVisible(enterUserValidPassword);
+        enterUserValidPassword.sendKeys(prop.getProperty("invalidPassword"));
     }
 
-    public void addValidPassword() {
-        enterUserValidPassword.sendKeys("admin123");
+    public void addValidPassword() throws IOException {
+        Properties prop = Utils.getPropertiesFile();
+        waitForElementToBeVisible(enterUserValidPassword);
+        enterUserValidPassword.sendKeys(prop.getProperty("password"));
     }
 
     public void addUserName() {
