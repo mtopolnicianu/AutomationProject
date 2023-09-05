@@ -157,7 +157,16 @@ public class StepDefinitions {
     @Given("^I enter (.*) and (.*)$")
     public void userEntersUsernameAndPassword(String username, String password){
         loginPage.enterUsernameAndPassword(username,password);
+    }
 
+    @And("^I select the Rejected status from the 'Show Leave with Status' section$")
+    public void selectLeaveWithRejectedStatus(){
+        leavePage.clickShowLeaveWithStatusButton();
+        leavePage.clickRejectedOption();
+    }
 
+    @Then("^I check that the Rejected status is present as a selection by using XPath locator$")
+    public void iVerifyRejectedStatusToBeSelected(){
+        leavePage.verifyRejectedStatusSelected();
     }
 }
