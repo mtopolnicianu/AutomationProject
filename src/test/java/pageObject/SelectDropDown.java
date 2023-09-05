@@ -2,6 +2,7 @@ package pageObject;
 
 import io.cucumber.java.eo.Se;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class SelectDropDown {
-    public static void main(String[] args) throws InterruptedException {
+
+    @Test
+    public static void dropDown() throws InterruptedException {
         WebDriverManager.chromedriver().driverVersion("116.0.5845.110").setup();
         ChromeDriver driver = new ChromeDriver();
         // driver.get("https://www.sugarcrm.com/au/request-demo/");
