@@ -2,7 +2,7 @@ Feature: OrangeHRM Home page testing
 
   Background: Access the url
     Given I access https://opensource-demo.orangehrmlive.com/web/index.php/auth/login page
-
+@test
   Scenario: As a user I can verify that the Rejected status is correctly added to the leave records search
     Given I enter the valid login credentials
     And I press the Login button to log into my account
