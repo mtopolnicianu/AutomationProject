@@ -26,6 +26,8 @@ public class LoginPage extends BasePage
     private WebElement enterUserValidPassword;
     @FindBy(xpath = "//div[@class=\"oxd-form-actions orangehrm-login-action\"]")
     private WebElement loginButton;
+    @FindBy(css = ".orangehrm-login-branding")
+    private WebElement logo;
     @FindBy(xpath = "//div[@class=\"oxd-alert-content oxd-alert-content--error\"]/p[text()=\"Invalid credentials\"]")
     private WebElement invalidCredentialsMessage;
     @FindBy(css = ".oxd-input-field-error-message")
@@ -35,6 +37,10 @@ public class LoginPage extends BasePage
     @FindBy(xpath = "//div[@class='oxd-sheet oxd-sheet--rounded oxd-sheet--gutters oxd-sheet--gray-lighten-2 orangehrm-demo-credentials']")
     private WebElement userNameAdmin;
 
+    public void validateLogo(){
+        waitForElementToBeVisible(logo);
+        Assert.assertTrue(logo.isDisplayed());
+    }
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -108,5 +114,12 @@ public class LoginPage extends BasePage
         Assert.assertTrue(passwordFiled.isDisplayed());
       //  Assert.assertFalse(passwordFiled.isDisplayed());
     }
+    public void enterUsernameAndPassword(String username, String password){
+        waitForElementToBeVisible(enterValidUserName);
+        enterValidUserName.sendKeys(username);
+        waitForElementToBeVisible(enterUserValidPassword);
+        enterUserValidPassword.sendKeys(password);
+    }
+
 
 }
