@@ -1,5 +1,6 @@
 package pageObject;
 
+import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,11 @@ public class LeavePage extends BasePage {
     private WebElement individualEmployeeButton;
     @FindBy(xpath = "//ul[@class='oxd-dropdown-menu']/li[1]")
     private WebElement addEntitlementsOption;
+    @FindBy(xpath = "//div[text()='Select']")
+    private WebElement showLeaveWithStatusButton;
+    @FindBy(xpath = "//span[contains(text(),'Rejected')]")
+    private WebElement rejectedStatus;
+
 
     public void clickLeaveLink() {
         waitForElementToBeVisible(leaveLink);
@@ -39,6 +45,19 @@ public class LeavePage extends BasePage {
     public void verifyIndividualEmployeeButtonIsChecked() {
         waitForElementToBeVisible((individualEmployeeButton));
         individualEmployeeButton.isEnabled();
+    }
+    public void clickShowLeaveWithStatusButton(){
+        waitForElementToBeVisible(showLeaveWithStatusButton);
+        showLeaveWithStatusButton.click();
+    }
+    public void clickRejectedOption(){
+        waitForElementToBeVisible(rejectedStatus);
+        rejectedStatus.click();
+    }
+
+    public void verifyRejectedStatusSelected(){
+        waitForElementToBeVisible(rejectedStatus);
+        Assert.assertTrue("Leave with Status Rejected was not selected", rejectedStatus.getText().contains("Rejected"));
     }
 
 
