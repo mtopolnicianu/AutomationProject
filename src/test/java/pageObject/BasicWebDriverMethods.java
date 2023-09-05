@@ -1,6 +1,7 @@
 package pageObject;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,8 @@ public class BasicWebDriverMethods {
     public static String browser = "chrome"; //External configuration -XLS, CSV
     public static WebDriver driver;
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public static void practiceBasicWebDriverMethods() throws InterruptedException {
 
         if (browser.equals("Firefox")) {
             WebDriverManager.firefoxdriver().setup();

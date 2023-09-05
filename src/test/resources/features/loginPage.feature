@@ -30,7 +30,6 @@ Feature: OrangeHRM login page testing
     And I press the Login button to log into my account
     Then I verify that an appropriate message is displayed for invalid credentials
 
-
   Scenario: As a user I want to login without an username
     Given I enter the valid password without a username
     And I press the Login button to log into my account

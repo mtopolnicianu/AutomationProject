@@ -2,6 +2,7 @@ package pageObject;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +10,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class PrintAllLinks {
-    public static void main(String[] args) throws InterruptedException {
+
+    @Test
+    public static void printLinksPractice() throws InterruptedException {
         WebDriverManager.chromedriver().driverVersion("116.0.5845.110").setup();
         ChromeDriver driver = new ChromeDriver();
         driver.get("https://www.salesforce.com/au/form/signup/freetrial-elf-v2/");
