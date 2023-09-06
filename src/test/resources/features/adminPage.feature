@@ -14,3 +14,12 @@ Feature: OrangeHrm Admin page testing
     And I press the Login button to log into my account
     And I click the Admin link
     Then I check that when I clicked on the Admin link it also shows the User Management text below the Admin text
+
+  Scenario: As a user I am able to access the Language Packages
+    Given I enter the valid login credentials
+    And I press the Login button to log into my account
+    And I click the Admin link
+    And I click on the Configuration dropdown menu button
+    And I click on the Language Packages option
+    And I click on the Translate button for Spanish - Español language package
+    Then I should be redirected to the languageCustomization page

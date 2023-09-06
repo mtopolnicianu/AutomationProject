@@ -58,32 +58,32 @@ public class StepDefinitions {
     }
 
     @And("^I click the My Info link$")
-    public void accessMyInfoLink(){
+    public void accessMyInfoLink() {
         myInfoPage.clickMyInfoOption();
     }
 
     @And("^I select Algeria as country$")
-    public void selectCountry(){
+    public void selectCountry() {
         myInfoPage.selectAlgeriaAsCountry();
     }
 
     @And("^I press the Save button$")
-    public void clickSaveButton(){
+    public void clickSaveButton() {
         myInfoPage.clickSaveButton();
     }
 
     @Then("^I should see the successfully updated confirmation message$")
-    public void iVerifyConfirmationMessage(){
+    public void iVerifyConfirmationMessage() {
         myInfoPage.verifySuccessUpdatedMessage();
     }
 
     @And("^I click on the Contact Details link which will redirect me to the contactDetails page$")
-    public void accessContactDetailsLink(){
+    public void accessContactDetailsLink() {
         myInfoPage.clickContactDetailsLink();
     }
 
     @And("^I update the Street 1 field from contact details$")
-    public void updateContactDetailsField(){
+    public void updateContactDetailsField() {
         myInfoPage.updateStreetOne();
     }
 
@@ -183,23 +183,52 @@ public class StepDefinitions {
     }
 
     @Then("^I verify that the company logo is displayed on the login page$")
-    public void iVerifyCompanyLogo(){
+    public void iVerifyCompanyLogo() {
         loginPage.validateLogo();
     }
 
     @Given("^I enter (.*) and (.*)$")
-    public void userEntersUsernameAndPassword(String username, String password){
-        loginPage.enterUsernameAndPassword(username,password);
+    public void userEntersUsernameAndPassword(String username, String password) {
+        loginPage.enterUsernameAndPassword(username, password);
     }
 
     @And("^I select the Rejected status from the 'Show Leave with Status' section$")
-    public void selectLeaveWithRejectedStatus(){
+    public void selectLeaveWithRejectedStatus() {
         leavePage.clickShowLeaveWithStatusButton();
         leavePage.clickRejectedOption();
     }
 
     @Then("^I check that the Rejected status is present as a selection by using XPath locator$")
-    public void iVerifyRejectedStatusToBeSelected(){
+    public void iVerifyRejectedStatusToBeSelected() {
         leavePage.verifyRejectedStatusSelected();
+    }
+
+    @And("^I click the Add Attachments button$")
+    public void clickAddAnAttachment() {
+        myInfoPage.clickAddAttachmentsButton();
+    }
+
+    @And("I select to upload a file")
+    public void uploadTheAFile() {
+        myInfoPage.uploadFile();
+
+    }
+    @And("^I click on the Configuration dropdown menu button$")
+    public void chooseConfigurationOption(){
+        adminPage.clickConfigurationButton();
+    }
+    @And("^I click on the Language Packages option$")
+    public void selectLanguagePackages(){
+        adminPage.selectLanguagePackages();
+    }
+
+    @And("^I click on the Translate button for Spanish - Español language package$")
+    public void selectSpanishLanguagePackage(){
+        adminPage.clickTranslateSpanishButton();
+    }
+
+    @Then("^I should be redirected to the languageCustomization page$")
+    public void iVerifyLanguageCustomizationPage(){
+        adminPage.confirmationTranslateLanguagePage();
     }
 }
