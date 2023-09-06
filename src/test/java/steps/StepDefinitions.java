@@ -3,6 +3,7 @@ package steps;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en_scouse.An;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -20,6 +21,7 @@ public class StepDefinitions {
     private OrangeHrmPage orangeHrmPage;
     private LeavePage leavePage;
     private AdminPage adminPage;
+    private MyInfoPage myInfoPage;
 
 
     @Before
@@ -41,6 +43,7 @@ public class StepDefinitions {
         orangeHrmPage = PageFactory.initElements(driver, OrangeHrmPage.class);
         leavePage = PageFactory.initElements(driver, LeavePage.class);
         adminPage = PageFactory.initElements(driver, AdminPage.class);
+        myInfoPage = PageFactory.initElements(driver, MyInfoPage.class);
     }
 
 //    @After
@@ -52,6 +55,36 @@ public class StepDefinitions {
     @Given("^I access ([^\"]*) page$")
     public void accessUrl(String link) {
         driver.get(link);
+    }
+
+    @And("^I click the My Info link$")
+    public void accessMyInfoLink(){
+        myInfoPage.clickMyInfoOption();
+    }
+
+    @And("^I select Algeria as country$")
+    public void selectCountry(){
+        myInfoPage.selectAlgeriaAsCountry();
+    }
+
+    @And("^I press the Save button$")
+    public void clickSaveButton(){
+        myInfoPage.clickSaveButton();
+    }
+
+    @Then("^I should see the successfully updated confirmation message$")
+    public void iVerifyConfirmationMessage(){
+        myInfoPage.verifySuccessUpdatedMessage();
+    }
+
+    @And("^I click on the Contact Details link which will redirect me to the contactDetails page$")
+    public void accessContactDetailsLink(){
+        myInfoPage.clickContactDetailsLink();
+    }
+
+    @And("^I update the Street 1 field from contact details$")
+    public void updateContactDetailsField(){
+        myInfoPage.updateStreetOne();
     }
 
 

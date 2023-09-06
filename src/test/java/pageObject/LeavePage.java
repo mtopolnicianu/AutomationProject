@@ -16,7 +16,6 @@ public class LeavePage extends BasePage {
     private WebElement leaveLink;
     @FindBy(xpath = "//span[text()='Entitlements ']")
     private WebElement entitlementsSection;
-
     @FindBy(css = ".oxd-input-field-bottom-space:nth-of-type(1) .oxd-radio-wrapper")
     private WebElement individualEmployeeButton;
     @FindBy(xpath = "//ul[@class='oxd-dropdown-menu']/li[1]")
@@ -25,7 +24,6 @@ public class LeavePage extends BasePage {
     private WebElement showLeaveWithStatusButton;
     @FindBy(xpath = "//span[contains(text(),'Rejected')]")
     private WebElement rejectedStatus;
-
 
     public void clickLeaveLink() {
         waitForElementToBeVisible(leaveLink);
