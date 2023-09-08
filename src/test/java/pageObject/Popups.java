@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Popups {
-    public static void main(String[] args) {
+    public static void popupsTest() {
         WebDriverManager.chromedriver().driverVersion("116.0.5845.110").setup();
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

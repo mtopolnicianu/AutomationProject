@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 public class AdminPage extends BasePage {
     public AdminPage(WebDriver driver) {
@@ -23,6 +25,34 @@ public class AdminPage extends BasePage {
     private WebElement spanishLanguageTranslateButton;
     @FindBy(xpath = "//h5[text()='Translate Language Package']")
     private WebElement translateLanguagePageText;
+    @FindBy(xpath = "//button[text()=' Add ']")
+    private WebElement addLanguagePackagesButton;
+    @FindBy(css = ".oxd-select-text--after")
+    private WebElement selectLanguagePackagesButton;
+    @FindBy(xpath = "//div[text()='Georgian (Georgia) - Georgian (Georgia)']")
+    private WebElement selectGeorgiaLanguagePackage;
+    @FindBy(css = ".oxd-select-text")
+    private WebElement colognianGermanyLanguagePackage;
+
+    public void clickAddLanguagePackages() {
+        waitForElementToBeVisible(addLanguagePackagesButton);
+        addLanguagePackagesButton.click();
+    }
+    public void selectColognianGermanyLanguagePackage() {
+        waitForElementToBeVisible(selectLanguagePackagesButton);
+        selectLanguagePackagesButton.click();
+
+    }
+    public void selectPackage(){
+        JavascriptExecutor executor=(JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].scrollIntoView();", colognianGermanyLanguagePackage);
+//        waitForElementToBeVisible(colognianGermanyLanguagePackage);
+//        Actions action = new Actions(driver);
+//        action.scrollToElement(colognianGermanyLanguagePackage).perform();
+
+//        waitForElementToBeVisible(colognianGermanyLanguagePackage);
+//        colognianGermanyLanguagePackage.click();
+    }
 
     public void confirmationTranslateLanguagePage() {
         waitForElementToBeVisible(translateLanguagePageText);

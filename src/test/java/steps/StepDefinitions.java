@@ -3,6 +3,7 @@ package steps;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.cucumber.java.en_scouse.An;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.en.And;
@@ -22,7 +23,6 @@ public class StepDefinitions {
     private LeavePage leavePage;
     private AdminPage adminPage;
     private MyInfoPage myInfoPage;
-
 
     @Before
     public void before() {
@@ -211,12 +211,13 @@ public class StepDefinitions {
     @And("I select to upload a file")
     public void uploadTheAFile() {
         myInfoPage.uploadFile();
-
     }
+
     @And("^I click on the Configuration dropdown menu button$")
     public void chooseConfigurationOption(){
         adminPage.clickConfigurationButton();
     }
+
     @And("^I click on the Language Packages option$")
     public void selectLanguagePackages(){
         adminPage.selectLanguagePackages();
@@ -231,4 +232,21 @@ public class StepDefinitions {
     public void iVerifyLanguageCustomizationPage(){
         adminPage.confirmationTranslateLanguagePage();
     }
+
+    @And("^I click the Add button to add a new language to the packages$")
+    public void clickToAddLanguagePackages(){
+        adminPage.clickAddLanguagePackages();
+    }
+
+    @And("^I select the language Colognian Germany from that list$")
+    public void addColognianLanguagePackage(){
+        adminPage.selectColognianGermanyLanguagePackage();
+        adminPage.selectPackage();
+    }
+
+    @Given("^I click to access ([^\"]*) DatePicker page$")
+    public void accessDatePickerPage(String link) {
+        driver.get(link);
+    }
+
 }
